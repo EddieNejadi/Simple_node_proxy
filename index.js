@@ -19,4 +19,4 @@ var server = http.createServer(function(req, res) {
 });
 
 console.log("listening on port 80")
-server.listen(80);
+server.listen(3000);
