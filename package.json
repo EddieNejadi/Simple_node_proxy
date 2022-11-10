@@ -4,6 +4,7 @@
     "description": "Simple http server for Azure app service for our internal services to be published to internet.",
     "main": "index.js",
     "scripts": {
+      "start": "node index.js",
       "dev": "node index.js",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
