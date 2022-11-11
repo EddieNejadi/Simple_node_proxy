@@ -20,6 +20,7 @@
 
 const express = require('express')
 const app = express()
+const { createProxyMiddleware } = require("http-proxy-middleware");
 const port = process.env.PORT || 3000
 const proxy_dest = process.env.PROXY_DEST || null
 
@@ -30,6 +31,15 @@ app.get('/', (req, res) => {
     res.send('No proxy dest dest is set')
   }
 })
+// Proxy endpoints
+app.use('/proxy', createProxyMiddleware({
+  target: proxy_dest,
+  changeOrigin: false,
+  pathRewrite: {
+      [`^/proxy`]: '',
+  },
+}));
+
 app.get('/test', (req, res) => {
   res.send('it is working')
 })
