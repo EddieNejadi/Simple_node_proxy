@@ -1,5 +1,5 @@
-var http = require('http'),
-    httpProxy = require('http-proxy');
+// var http = require('http'),
+//     httpProxy = require('http-proxy');
 
 
 // var proxy = httpProxy.createProxyServer({});
@@ -18,11 +18,14 @@ var http = require('http'),
 //   });
 // });
 
-var server = http.createServer(function (req, res) {
-    res.setHeader("Content-Type", "application/json");
-    res.writeHead(200);
-    res.end(`{"message": "This is a JSON response"}`);
-});
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
 
-console.log("listening on port 3000")
-server.listen(3000);
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
