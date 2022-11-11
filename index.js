@@ -21,9 +21,17 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
+const proxy_dest = process.env.PROXY_DEST || null
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  if (proxy_dest){
+    res.send(`Redirecting to ${proxy_dest}`)
+  } else {
+    res.send('No proxy dest dest is set')
+  }
+})
+app.get('/test', (req, res) => {
+  res.send('it is working')
 })
 
 app.listen(port, () => {
