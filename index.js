@@ -21,12 +21,12 @@
 const express = require('express')
 const app = express()
 const { createProxyMiddleware } = require("http-proxy-middleware");
-const port = process.env.PORT || 3000
-const proxy_dest = process.env.PROXY_DEST || null
+const port = process.env.APP_PROXY_PORT || 3000
+const proxy_dest = process.env.APP_PROXY_DEST || 'acaux02'
 
 app.get('/', (req, res) => {
   if (proxy_dest){
-    res.send(`Redirecting to ${proxy_dest}`)
+    res.send(`Redirecting to ${proxy_dest}:${port}`)
   } else {
     res.send('No proxy dest dest is set')
   }
@@ -42,6 +42,10 @@ app.use('/proxy', createProxyMiddleware({
 
 app.get('/test', (req, res) => {
   res.send('it is working')
+})
+
+app.get('/info', (req, res) => {
+  res.send(`APP_PROXY_DEST:APP_PROXY_PORT is set to ${proxy_dest}:${port}`)
 })
 
 app.listen(port, () => {
