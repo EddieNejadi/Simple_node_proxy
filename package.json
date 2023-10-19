@@ -1,6 +1,6 @@
 {
     "name": "simple_node_proxy",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Simple http server for Azure app service for our internal services to be published to internet.",
     "main": "index.js",
     "scripts": {
