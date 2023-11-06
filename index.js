@@ -58,7 +58,12 @@ app.get('/health', (req, res) => {
 })
 
 app.get('/info', (req, res) => {
-  res.send(`APP_PROXY_DEST:APP_PROXY_PORT is set to ${proxy_dest}:${proxy_port}`)
+  if (debug_mode){
+    res.send(`APP_PROXY_DEST:APP_PROXY_PORT is set to ${proxy_dest}:${proxy_port} with debug_mode is enabled`)
+  }
+  else{
+    res.send(`APP_PROXY_DEST:APP_PROXY_PORT is set to ${proxy_dest}:${proxy_port} with debug_mode is disabled`)
+  }
 })
 
 app.listen(app_port, () => {
