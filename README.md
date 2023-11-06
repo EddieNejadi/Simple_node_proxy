@@ -1,6 +1,6 @@
 # Simple_node_proxy
 
-This is simple node js proxy server to connect internet to internal VNet.
+This is a simple node js proxy server to connect the internet to internal VNet.
 
 ## Build
 

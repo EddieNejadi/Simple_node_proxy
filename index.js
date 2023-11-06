@@ -50,5 +50,5 @@ app.get('/info', (req, res) => {
 })
 
 app.listen(app_port, () => {
-  console.log(`Example app listening at http://localhost:${proxy_port}`)
+  console.log(`Example app listening at http://localhost:${app_port}`)
 })
