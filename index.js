@@ -24,6 +24,14 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const app_port   = process.env.APP_PORT || 80
 const proxy_port = process.env.APP_PROXY_PORT || 3000
 const proxy_dest = process.env.APP_PROXY_DEST || 'acaux02'
+const debug_mode = process.env.APP_DEBUG_MODE || false
+
+if (debug_mode){
+  app.use((req, res, next) => {
+    console.log(req.rawHeaders);
+    next();
+  });
+}
 
 app.get('/', (req, res) => {
   if (proxy_dest){
@@ -43,6 +51,10 @@ app.use('/proxy', createProxyMiddleware({
 
 app.get('/test', (req, res) => {
   res.send('it is working')
+})
+
+app.get('/health', (req, res) => {
+  res.status(200).send()
 })
 
 app.get('/info', (req, res) => {
