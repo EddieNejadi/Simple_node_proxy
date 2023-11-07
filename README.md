@@ -12,6 +12,6 @@ node ./index.js # for prod
 
 ## Environment variables
 
-* APP_PORT default is 80
+* PORT default is 8080
 * APP_PROXY_PORT default is 3000
 * APP_PROXY_DEST default is acaux02

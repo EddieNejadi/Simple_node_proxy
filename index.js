@@ -21,9 +21,9 @@
 const express = require('express')
 const app = express()
 const { createProxyMiddleware } = require("http-proxy-middleware");
-const app_port   = process.env.APP_PORT || 80
+const app_port   = process.env.PORT || 8080
 const proxy_port = process.env.APP_PROXY_PORT || 3000
-const proxy_dest = process.env.APP_PROXY_DEST || "10.60.1.12" //'acaux02'
+const proxy_dest = process.env.APP_PROXY_DEST || "acaux02"
 const debug_mode = process.env.APP_DEBUG_MODE || false
 
 if (debug_mode){
